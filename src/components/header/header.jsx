@@ -6,6 +6,9 @@ import {ReactComponent as Logo} from "../../assets/images/shop.svg";
 import {connect} from "react-redux";
 import Cart from "../cart/cart";
 import Drop from "../cart-dropdown/cart-drop";
+import {selectHidden} from "../../redux/cart/cartSelector";
+import {selectCurrentUser} from "../../redux/user/userSelector";
+import {createStructuredSelector} from "reselect";
 const Header= ({currentUser,hidden})=>(
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <Link to="/" className="navbar-brand" >
@@ -39,10 +42,10 @@ const Header= ({currentUser,hidden})=>(
   </div>
 </nav>
 )
-const mapStateToProps = ({user : {currentUser},cart : {hidden}}  )=>(
- { currentUser : currentUser,
-   hidden : hidden
-}
+const mapStateToProps = createStructuredSelector(
+ { currentUser : selectCurrentUser,
+   hidden : selectHidden
+ }
 );
 
 
