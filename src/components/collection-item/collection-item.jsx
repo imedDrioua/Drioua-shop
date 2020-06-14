@@ -13,7 +13,7 @@ const CollectionItem = ({item,addItem} )=>
           <span className="name">{name}</span>
           <span className="price">{price}</span>
       </div> 
-     <Button onClick={()=>addItem(item)} classes="btn btn-outline-dark btn-lg btn-collection">ADD</Button>
+     <Button onClick={()=>addItem(item)} classes="btn btn-secondary btn-lg btn-collection">ADD</Button>
     </div>)
  }
 const mapDispatchToProps= dispatch =>({
