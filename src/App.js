@@ -1,26 +1,70 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Route, BrowserRouter,Switch,Redirect} from "react-router-dom";
 import './App.css';
+import {auth} from "./firebase/firebase-util";
+import Hompage from "./pages/home-page/hompage.components";
+import ShopPage from "./pages/shop-pages/shop-page";
+import Header from "./components/header/header";
+import Sign from "./pages/sign-in-up/sign-in-up";
+import {  creatUsreDocument} from "./firebase/firebase-util";
+import {connect} from "react-redux";
+import {setCurrentUser} from "./redux/user/userActions";
+class App extends React.Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+       subscribed = null;
+       componentDidMount()  { 
+        this.subscribed= auth.onAuthStateChanged(async (user) =>{
+                 if(user){
+                  const userRef= await creatUsreDocument(user,{});
+                  userRef.onSnapshot(userSnap=>{
+                   this.props.setCurrentUser(
+                            {
+                              id : userSnap.id,
+                              ...userSnap.data()                          
+                            }                
+                   );
+
+                  });
+              }
+                     this.props.setCurrentUser(user);  
+       
+
+                     
+       })
+} 
+componentWillUnmount(){
+this.subscribed();
 }
+       render(){
 
-export default App;
+              return( 
+                       <BrowserRouter>
+                    <Header  />
+                    <Switch>
+                               <Route exact path="/" component={Hompage} />,
+                               <Route exact path="/shop" component={ShopPage} />
+                               <Route exact path="/sign" 
+                               render={()=>this.props.currentUser ? 
+                               <Redirect to="/"/> :
+                               <Sign />}
+
+                               />
+                               </Switch>
+                    </BrowserRouter>            
+             ) ;
+       }
+    
+}
+const mapStateToProps = state =>(
+       {
+              currentUser : state.user.currentUser
+       }
+)
+const mapDispatchToProps = dispatch => ({
+       setCurrentUser: user => dispatch(setCurrentUser(user))
+     });
+     
+     export default connect(
+       mapStateToProps,
+       mapDispatchToProps
+     )(App);
