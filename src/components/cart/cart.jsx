@@ -13,7 +13,7 @@ const Cart =({toggleCart,somme})=>
         <span className="item-count">{somme}</span>
     </div>)
 const mapDispatchToProps = dispatch =>(
- {   
+    {   
      toggleCart : ()=>dispatch(toggleCart())
     }
 )

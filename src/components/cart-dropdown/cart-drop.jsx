@@ -5,17 +5,25 @@ import {connect} from "react-redux";
 import { CartItem } from '../cartItem/cartItem';
 import {selectCartItems} from "../../redux/cart/cartSelector";
 import {createStructuredSelector} from "reselect";
+import { withRouter } from 'react-router-dom';
+import { toggleCart } from '../../redux/cart/cartActions';
 
-const Drop = ({items})=>(
+const Drop = ({items,history,dispatch})=>(
     <div className="cart-dropdown">
-        <div className="cart-items" >
-            {items.map(item => <CartItem key={item.id} item={item}/>) }
+        <div className="cart-items">
+
+            {items.length ? items.map(item => <CartItem key={item.id} item={item}/>) :
+               <span className="emptyMessage">Buy Somthing Bro !</span>
+            }
         </div>
-        <Button classes="btn btn-outline-dark btn-lg">Check</Button>
+        <Button onClick={()=>
+        {history.push("/checkout");
+        dispatch(toggleCart())}
+        } classes="btn btn-outline-dark btn-lg">GO TO CHECK</Button>
     </div>
 )
 const mapStateToProps=createStructuredSelector(
  {  items  : selectCartItems}
 )
 
-export default connect(mapStateToProps)(Drop);
+export default withRouter(connect(mapStateToProps)(Drop));

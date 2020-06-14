@@ -1,4 +1,4 @@
-import {addItemsArray} from "../../components/cart/util";
+import {addItemsArray,decreasItem} from "../../components/cart/util";
 const INITIAL_STATE ={
     hidden : false,
     items : []
@@ -17,6 +17,16 @@ const cartReducer = (state=INITIAL_STATE  , action )=>{
                 ...state,
                 items : addItemsArray(state.items , action.payload)
             };
+        case "REMOVE_ITEM":
+             return {
+                ...state,
+                 items : state.items.filter(item => item.id !== action.payload.id)
+                };
+                case "DECREASE_ITEM":
+                    return {
+                       ...state,
+                        items : decreasItem(state.items,action.payload)
+                       };      
         default: return state;
     }
 }

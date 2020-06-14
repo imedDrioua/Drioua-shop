@@ -10,7 +10,7 @@ import {selectHidden} from "../../redux/cart/cartSelector";
 import {selectCurrentUser} from "../../redux/user/userSelector";
 import {createStructuredSelector} from "reselect";
 const Header= ({currentUser,hidden})=>(
-<nav className="navbar navbar-expand-lg navbar-light bg-light">
+<nav  className="navbar navbar-expand-lg navbar-light bg-light">
   <Link to="/" className="navbar-brand" >
   <Logo className="logo" />  
   </Link>
@@ -23,7 +23,7 @@ const Header= ({currentUser,hidden})=>(
       <Link className="nav-link " to="/shop">SHOP</Link>
       </li>
       <li className="nav-item ">
-      <Link className="nav-link " to="/contact" >Contact</Link>   
+      <Link className="nav-link" to="/contact" >Contact</Link>   
       </li>
       <li>
       {
