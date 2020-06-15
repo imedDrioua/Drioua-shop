@@ -46,9 +46,9 @@ this.subscribed();
                     <Header  />
                     <Switch>
                                <Route exact path="/" component={Hompage} />,
-                               <Route exact path="/shop" component={ShopPage} />
-                               <Route exact path="/checkout" component={Checkout}/>
-                               <Route exact path="/sign" 
+                               <Route  path="/shop" component={ShopPage} />
+                               <Route  path="/checkout" component={Checkout}/>
+                               <Route  path="/sign" 
                                render={()=>this.props.currentUser ? 
                                <Redirect to="/"/> :
                                <Sign />}

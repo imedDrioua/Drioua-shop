@@ -8,7 +8,8 @@
   border: 1px solid black;
   margin: 0 7.5px 15px;
   overflow: hidden;
-
+  animation: transitionAnimation 2s ease-out 2s;
+  animation-fill-mode: backwards;
   &:hover {
     cursor: pointer;
 
@@ -78,4 +79,18 @@
 .content:hover::after{
   transform: scale(2);
   opacity: 0;
+}
+@keyframes transitionAnimation{
+
+  0%{
+      opacity: 0;
+      transform: translateX(-500px);
+  }
+  80%{
+      transform: translateX(20Px);
+  }
+  100%{
+    transform: translateX(20Px);
+    opacity: 1;
+  }
 }

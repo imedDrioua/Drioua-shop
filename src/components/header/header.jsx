@@ -23,15 +23,14 @@ const Header= ({currentUser,hidden})=>(
       <Link className="nav-link " to="/shop">SHOP</Link>
       </li>
       <li className="nav-item ">
-      <Link className="nav-link" to="/contact" >Contact</Link>   
+      <Link className="nav-link" to="/contact" >CONTACT</Link>   
       </li>
       <li>
       {
-        currentUser ?
-        (   <li className="nav-item ">
-      <Link className="nav-link " onClick={ async ()=> await auth.signOut()} to="/"  >Sign out</Link>   
-      </li>) :
-      <Link className="nav-link " to="/sign"  >Sign in</Link>
+        currentUser ? 
+      <Link className="nav-link " onClick={ async ()=> await auth.signOut()} to="/">SIGN OUT</Link>   
+       :
+      <Link className="nav-link " to="/sign"  >SIGN IN</Link>
       }
       </li>
       <li>

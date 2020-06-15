@@ -37,7 +37,7 @@ class SignIn extends React.Component{
         return (
             <div className="sign-in">
                 <h1>Sign in</h1>
-                <h3>I already have an acount</h3>
+                <h3>I already have an account</h3>
                 <form >
                     <InputForm 
                     label="email"
