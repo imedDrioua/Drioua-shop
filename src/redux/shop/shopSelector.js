@@ -16,10 +16,14 @@ export const selectCollections  = createSelector(
     [selectShop],
     (shop)=> shop.collections
 )
+export const selectCollectionArray = createSelector(
+    [selectCollections],
+    (collections) => Object.keys(collections).map(key => collections[key])
+)
 
 export const collectionSelector = paramName =>(
     createSelector(
         [selectCollections],
-        (collections)=> collections.filter(collection => collection.id === stringToId[paramName])[0]
+        (collections)=>(collections[paramName])
     )
 )

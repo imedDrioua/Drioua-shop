@@ -6,9 +6,10 @@
   align-items: center;
   justify-content: center;
   border: 1px solid black;
+  border-radius: 10%;
   margin: 0 7.5px 15px;
   overflow: hidden;
-  animation: transitionAnimation 2s ease-out 2s;
+  animation: transitionAnimation 2s ease-out 1s;
   animation-fill-mode: backwards;
   &:hover {
     cursor: pointer;
@@ -90,7 +91,7 @@
       transform: translateX(20Px);
   }
   100%{
-    transform: translateX(20Px);
+    transform: translateX(0Px);
     opacity: 1;
   }
 }

@@ -6,7 +6,7 @@ import Directory from '../../components/directory/directory';
 const HomePage = ()=>{
     return (
         <div className="homepage">
-        <h1 className="bigTitle">Drioua's Shop</h1>
+        <h1 className="bigTitle">Asmas's Shop</h1>
         <img className="shopImage" src="./home.png" alt="shop"/>
              <Directory />
         </div>

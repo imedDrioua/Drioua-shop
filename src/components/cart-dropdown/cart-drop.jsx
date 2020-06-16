@@ -13,7 +13,7 @@ const Drop = ({items,history,dispatch})=>(
         <div className="cart-items">
 
             {items.length ? items.map(item => <CartItem key={item.id} item={item}/>) :
-               <span className="emptyMessage">Buy Somthing Bro !</span>
+               <span className="emptyMessage">SHOP NOW TO FILL !</span>
             }
         </div>
         <Button onClick={()=>
