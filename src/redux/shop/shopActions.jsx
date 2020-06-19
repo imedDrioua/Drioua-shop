@@ -1,4 +1,4 @@
-import {firestore} from "../../firebase/firebase-util";
+import {firestore,createCollections} from "../../firebase/firebase-util";
 
 export const start = ()=> ({
     type : "START_FETCHING"
@@ -24,19 +24,3 @@ export const  asyncFetching = ()=>{
     }
 
 }
-const createCollections=snapShot=>{
-    const dataArray = snapShot.docs.map(doc =>{
-        const {title , items}= doc.data();
-        return ({
-            title,
-            routeName : encodeURI(title.toLowerCase()),
-            id : doc.id,
-            items
-        })
-    });
-    return dataArray.reduce((acc , collection)=>
-  {  acc[collection.title.toLowerCase()] = collection;
-    return acc;
-  },{})
-  
-  }

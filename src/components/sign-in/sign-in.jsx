@@ -1,39 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
 import "./sign-in.scss";
 import InputForm from "../../components/form-input/form-input";
 import Button from "../../components/button/button";
 import {signInWithGoogle} from "../../firebase/firebase-util";
 import {auth} from "../../firebase/firebase-util";
-class SignIn extends React.Component{
-    constructor(){
-        super();
-        this.state={
-        email : "",
-        password : ""
-        }
-    }
-     handlChange = (event)=>{
+const  SignIn = ()=>{
+   const [userCred , setUserCred] = useState(
+   {email : "",
+    password : ""}
+   );
+    const  handlChange = (event)=>{
         const {name , value} = event.target;
-         this.setState((prev)=>
-             (
-               {  ...prev,
-                 [name]:value}
-             )
-         )
+         setUserCred({
+             ...userCred ,
+             [name] : value
+         })
     }
-    handlSubmit= async (event)=> {
+    const  handlSubmit= async (event)=> {
+      
     event.preventDefault();
-    const {email , password } = this.state;
+    const {email , password } = userCred;
     await auth.signInWithEmailAndPassword(email , password);
-    this.setState(
+    setUserCred(
        {
         email : "",
         password : ""
        } 
     )
     }
-
-    render(){
+    const {email , password}=userCred;
         return (
             <div className="sign-in">
                 <h1>Sign in</h1>
@@ -42,22 +37,22 @@ class SignIn extends React.Component{
                     <InputForm 
                     label="email"
                     name="email"
-                    handlchange={this.handlChange}
+                    handlchange={handlChange}
                     type="email" 
-                    value={this.state.email} 
+                    value={email} 
                  />
                     <InputForm 
                     label="paassword"
                     name="password"
-                    handlchange={this.handlChange}
+                    handlchange={handlChange}
                     type="password" 
-                    value={this.state.password} 
+                    value={password} 
                      />
-                  <Button type="submit" classes={"btn btn-lg btn-dark"} onClick={this.handlSubmit} >Sign In </Button>
+                  <Button type="submit" classes={"btn btn-lg btn-dark"} onClick={handlSubmit} >Sign In </Button>
                   <Button type="button" classes={"btn btn-lg btn-outline-primary"} onClick={()=>signInWithGoogle()} >Sign In with Google</Button>                               
                  </form>
             </div>
         )
     }
-}
+
 export default SignIn;

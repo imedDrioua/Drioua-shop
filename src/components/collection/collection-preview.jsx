@@ -1,10 +1,12 @@
 import React from "react";
 import "./collection-preview.scss";
 import CollectionItem from "../collection-item/collection-item";
+import { Link, withRouter } from "react-router-dom";
 
-const CollectionPreview = ({title , items})=>(
+
+const CollectionPreview = ({title , items,history})=>(
     <div className="collection-preview">
-        <h1 className="title">{title}</h1>
+        <h1 onClick={()=> history.push(`/shop/${title.toLowerCase()}`)} className="title">{title}</h1>
         <div className="preview">
             {
                 items.filter((item , index)=>(index < 4)).map(item=> (<CollectionItem key={item.id} item={item} />))
@@ -12,5 +14,5 @@ const CollectionPreview = ({title , items})=>(
         </div>
     </div>
 );
-export default CollectionPreview;
+export default withRouter (CollectionPreview);
   

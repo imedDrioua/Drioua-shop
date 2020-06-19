@@ -52,3 +52,19 @@ export const creatUsreDocument= async (userAuth ,data)=>{
   
   export default firebase;
   
+  export const createCollections=snapShot=>{
+    const dataArray = snapShot.docs.map(doc =>{
+        const {title , items}= doc.data();
+        return ({
+            title,
+            routeName : encodeURI(title.toLowerCase()),
+            id : doc.id,
+            items
+        })
+    });
+    return dataArray.reduce((acc , collection)=>
+  {  acc[collection.title.toLowerCase()] = collection;
+    return acc;
+  },{})
+  
+  }
