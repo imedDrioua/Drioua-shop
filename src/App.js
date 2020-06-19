@@ -5,7 +5,7 @@ import {auth} from "./firebase/firebase-util";
 import Hompage from "./pages/home-page/hompage.components";
 import ShopPage from "./pages/shop-pages/shop-page";
 import Header from "./components/header/header";
-import {  creatUsreDocument} from "./firebase/firebase-util";
+import {creatUsreDocument} from "./firebase/firebase-util";
 import {connect} from "react-redux";
 import {setCurrentUser} from "./redux/user/userActions";
 import {createStructuredSelector} from "reselect";

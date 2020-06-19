@@ -1,28 +1,26 @@
-import React from 'react';
+import React,{useState} from 'react';
 import InputForm from "../form-input/form-input";
 import Button from "../button/button";
 import {auth} from "../../firebase/firebase-util";
 import {creatUsreDocument} from "../../firebase/firebase-util";
-class Signup extends React.Component{
-    constructor(){
-        super();
-        this.state={
-            displayName:"",
-            email : "",
-            password : "",
-            confirmedPassword : ""
-        }
-    }
-    handlChange = (event)=>{
+const Signup =()=>{
+    const [userCred , setUserCred] = useState({
+      displayName:"",
+      email : "",
+      password : "",
+      confirmedPassword : ""
+  });
+   const handlChange = (event)=>{
         const {name  , value} = event.target;
-       this.setState({
+       setUserCred({
+                   ...userCred,
                   [name] : value
        });
     }
-    handleSubmit = async event => {
+   const  handleSubmit = async event => {
         event.preventDefault();
     
-        const { displayName, email, password, confirmedPassword } = this.state;
+        const { displayName, email, password, confirmedPassword } = userCred;
     
         if (password !== confirmedPassword) {
           alert("passwords don't match");
@@ -47,47 +45,46 @@ class Signup extends React.Component{
           console.error(error);
         }
       };
-    render(){
+       const {displayName , password , email , confirmedPassword}= userCred;
         return(
            <div className="signUp">
-
                <h1 className="title">Sign Up</h1>
                <h3>I d'ont have an account yet !</h3>
                <form>
                <InputForm 
                     label="Display Name"
                     name="displayName"
-                    handlchange={this.handlChange}
+                    handlchange={handlChange}
                     type="text" 
-                    value={this.state.displayName} 
+                    value={displayName} 
                  />
                <InputForm 
                     label="email"
                     name="email"
-                    handlchange={this.handlChange}
+                    handlchange={handlChange}
                     type="email" 
-                    value={this.state.email} 
+                    value={email} 
                  />
                 <InputForm 
                     label="password"
                     name="password"
-                    handlchange={this.handlChange}
+                    handlchange={handlChange}
                     type="password" 
-                    value={this.state.password} 
+                    value={password} 
                  />
                    <InputForm 
                     label="Confirm Password"
                     name="confirmedPassword"
-                    handlchange={this.handlChange}
+                    handlchange={handlChange}
                     type="password" 
-                    value={this.state.confirmedPassword} 
+                    value={confirmedPassword} 
                  />
-                 <Button classes="btn btn-dark btn-lg" type="submit" onClick={this.handleSubmit}>
+                 <Button classes="btn btn-dark btn-lg" type="submit" onClick={handleSubmit}>
                  Sign Up</Button>
                </form>
            </div>
         )
-    }
+    
 }
 
 export default Signup;
