@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 
 const CollectionOverview=({collections})=> (
     <div>
+    {console.log(collections)}
          {collections.map(({id,...props}) =>  ( <CollectionPreview key={id} {...props}  />))}
     </div>
 )

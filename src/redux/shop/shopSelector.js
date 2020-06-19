@@ -17,3 +17,7 @@ export const collectionSelector = paramName =>(
         (collections)=>(collections ? collections[paramName] : null )
     )
 )
+export const isFetchingSelector= createSelector(
+    [selectShop],
+    shop => shop.isFetching
+);

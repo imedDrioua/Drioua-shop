@@ -6,15 +6,15 @@ import CollectionItem from "../../components/collection-item/collection-item"
 
 const Collection = ({collection})=>{
 
-   const {items , title}= collection;
-    return(
-        
+   const {items , title}= collection ? collection : {items : [] , title : ""};
+    return(  
     <div className="collection-page">
     <h2 className="title">{title}</h2>
     <div className="items">
        {  items.map(item=> <CollectionItem key={item.id} item={item}/>)}
     </div>
-    </div>
+    </div> 
+    
 )}
 const mapTostate= (state , ownProps) =>(
 {    collection : collectionSelector(ownProps.match.params.collectionId)(state)}
