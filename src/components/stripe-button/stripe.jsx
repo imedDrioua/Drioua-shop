@@ -1,6 +1,6 @@
 import  React from "react";
 
-import StripeCheckout, {StripCheckout} from "react-stripe-checkout";
+import StripeCheckout from "react-stripe-checkout";
 
 const Strip = ({price})=>{
     const publishKey=	
@@ -14,7 +14,7 @@ const Strip = ({price})=>{
        name="Asma's Shop"
        shippingAddress
        billingAddress
-       description={"Your total is ${price}"} 
+       description={`Your total is ${price}`} 
        amount={price * 100}
        panelLabel="Pay now"
        stripeKey={publishKey}
