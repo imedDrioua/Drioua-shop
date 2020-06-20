@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {Route, BrowserRouter,Switch,Redirect} from "react-router-dom";
 import './App.css';
 import {auth} from "./firebase/firebase-util";
@@ -14,31 +14,32 @@ import  Checkout  from './pages/checkout/checkout';
 import Sign from "./pages/sign-in-up/sign-in-up";
 
 
-class App extends React.Component {
+const App =({setCurrentUser ,currentUser })=>{
 
-       subscribed = null;
-       componentDidMount()  { 
-        this.subscribed= auth.onAuthStateChanged(async (user) =>{
-                 if(user){
-                  const userRef= await creatUsreDocument(user,{});
-                  userRef.onSnapshot(userSnap=>{
-                   this.props.setCurrentUser(
-                            {
-                              id : userSnap.id,
-                              ...userSnap.data()                          
-                            }                
-                   );
 
-                  });
-              }
-                     this.props.setCurrentUser(user);                   
-       })
-  
-} 
-componentWillUnmount(){
-this.subscribed();
-}
-       render(){
+       useEffect(() => {
+              let subscribed = null;
+              subscribed= auth.onAuthStateChanged(async (user) =>{
+                     if(user){
+                      const userRef= await creatUsreDocument(user,{});
+                      userRef.onSnapshot(userSnap=>{
+                       setCurrentUser(
+                                {
+                                  id : userSnap.id,
+                                  ...userSnap.data()                          
+                                }                
+                       );
+    
+                      });
+                  }
+                       setCurrentUser(user);                   
+           })
+           return ()=>{
+                  subscribed();
+           }
+             
+       }, [setCurrentUser]);
+      
 
               return( 
                        <BrowserRouter>
@@ -48,7 +49,7 @@ this.subscribed();
                                <Route  path="/shop" component={ShopPage} />
                                <Route  path="/checkout" component={Checkout}/>
                                <Route  path="/sign" 
-                               render={()=>this.props.currentUser ? 
+                               render={()=>currentUser ? 
                                <Redirect to="/"/> :
                                <Sign />}
 
@@ -58,7 +59,6 @@ this.subscribed();
              ) ;
        }
     
-}
 const mapStateToProps = createStructuredSelector(
        {
               currentUser : selectCurrentUser,
