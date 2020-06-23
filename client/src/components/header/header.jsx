@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "./header.css";
+import "./header.scss";
 import {auth} from "../../firebase/firebase-util";
 import {ReactComponent as Logo} from "../../assets/images/shop.svg";
 import {connect} from "react-redux";
@@ -10,36 +10,41 @@ import {selectHidden} from "../../redux/cart/cartSelector";
 import {selectCurrentUser} from "../../redux/user/userSelector";
 import {createStructuredSelector} from "reselect";
 const Header= ({currentUser,hidden})=>(
-<nav  className="navbar navbar-expand-lg navbar-light bg-light">
-  <Link to="/" className="navbar-brand" >
-  <Logo className="logo" />  
+<div  className="navigationBar">
+  <Link to="/" className="logo" >
+  <Logo />  
   </Link>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNav">
-    <ul className="navbar-nav ml-auto">
-      <li className="nav-item active">
-      <Link className="nav-link " to="/shop">SHOP</Link>
+  <input type="checkbox" className="check" id="navi-toggle" />
+  <label for="navi-toggle" class="button">
+                <span>&nbsp;</span>
+            </label>
+     <div className="background">&nbsp;</div>
+     <nav>
+    <ul className="navigation_list">
+    <Link to="/" className="logo" >
+  <Logo />  
+  </Link>
+      <li className="item">
+      <Link className="link" to="/shop">SHOP</Link>
       </li>
-      <li className="nav-item ">
-      <Link className="nav-link" to="/contact" >CONTACT</Link>   
+      <li className="item">
+      <Link className="link" to="/contact" >CONTACT</Link>   
       </li>
-      <li>
+      <li className="item">
       {
         currentUser ? 
-      <Link className="nav-link " onClick={ async ()=> await auth.signOut()} to="/">SIGN OUT</Link>   
+      <Link className="link" onClick={ async ()=> await auth.signOut()} to="/">SIGN OUT</Link>   
        :
-      <Link className="nav-link " to="/sign"  >SIGN IN</Link>
+      <Link className="link" to="/sign"  >SIGN IN</Link>
       }
       </li>
-      <li>
-       <Cart />
-      </li>
     </ul>
-       {  hidden &&  <Drop />}
+    </nav>
+  <div className="cart">
+  <Cart className="cart" />
   </div>
-</nav>
+       {  hidden &&  <Drop />}
+</div>
 )
 const mapStateToProps = createStructuredSelector(
  { currentUser : selectCurrentUser,
