@@ -11,8 +11,10 @@ const CollectionItem = ({item,addItem, toggleCart,hidden,space} )=>
   return (   
      <div  className="col-md-3" >
      <div className="collection-item " style={space? {marginBottom : 30} :{}} >
+  
       <div className="front side"  style={{backgroundImage: `url(${imageUrl})`} } />
       <div className="back side">
+      <p>Asma Zgh</p>
       <div className="collection-footer">
           <span className="name">{name}</span>
           <span className="price">{price} DZA</span>

@@ -12,7 +12,7 @@ const HomePage = ()=>{
               Sorry §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
             </video>
         </div>
-        <h1 className="bigTitle">Asmas's Shop</h1>
+        <h1 className="bigTitle">Asmas's Z gh Shop</h1>
              <Directory />
         </div>
     );
