@@ -5,10 +5,10 @@
 
     .logo{
         display: inline-block;
-        margin-top: .5rem;
+        margin-top: .9rem;
         margin-left: .5rem;
         animation: moveRight 1s ease-in ;
-       animation-fill-mode: backwards;
+        animation-fill-mode: backwards;
         
     }
     .check{
@@ -87,13 +87,12 @@
     .background{
         width: 2rem;
         height: 2rem;
-       background-image: radial-gradient(lightgrey,black);
+       background-image: radial-gradient(lightgrey,rgba(0, 0, 0, 0.795));
         border-radius: 50%;
         position: fixed;
         right: 5.27rem;
         top : 1.28rem;
         z-index: 1000;
-        box-shadow: 0 5rem 8rem rgba(0, 0, 0, 0.842);
         transition: all .8s cubic-bezier(0.86, 0, 0.07, 1);
     }
    
@@ -144,7 +143,7 @@
         z-index: 1500;
         opacity: 0;
         width: 0;
-        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition: all .8s cubic-bezier(0.86, 0, 0.07, 1) ;
     }
 }
 

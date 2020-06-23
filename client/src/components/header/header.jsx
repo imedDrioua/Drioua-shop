@@ -18,7 +18,7 @@ const Header= ({currentUser,hidden})=>(
   <label for="navi-toggle" class="button">
                 <span>&nbsp;</span>
             </label>
-     <div className="background">&nbsp;</div>
+     <div className="background"></div>
      <nav>
     <ul className="navigation_list">
     <Link to="/" className="logo" >
