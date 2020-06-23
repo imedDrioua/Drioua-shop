@@ -8,9 +8,9 @@ import {
 const CollectionPreview = ({title , items,history})=>(
     <div className="collection-preview">
         <h1 onClick={()=> history.push(`/shop/${title.toLowerCase()}`)} className="title">{title}</h1>
-        <div className="preview">
+        <div className="row">
             {
-                items.filter((item , index)=>(index < 4)).map(item=> (<CollectionItem key={item.id} item={item} />))
+                items.filter((item , index)=>(index < 4)).map(item=> (<CollectionItem key={item.id} space={false} item={item} />))
             }
         </div>
     </div>

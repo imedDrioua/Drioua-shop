@@ -4,6 +4,7 @@
     align-items: center;
     padding: 20px 80px;
     overflow: hidden;
+    position: relative;
   .bigTitle {
     font-size: 100px;
     color: black;
@@ -11,17 +12,23 @@
     z-index: 5;
     font-family: 'Niconne', cursive;
   }
-  
-  }
- 
-  .shopImage{
+  .bg-video{
     position: absolute;
-   height: 150vh;
-   width: 100vw;
-    background-size: cover;
-
+    left : 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    opacity: .7;
+    z-index: -1;
+    .video{
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
   
   }
+
 @keyframes animateHome {
   0%{
      transform: translateX(-10%);

@@ -1,45 +1,78 @@
 .collection-item {
-    width: 22vw;
-    display: flex;
-    flex-direction: column;
-    height: 350px;
-    align-items: center;
     position: relative;
+    height: 20rem;
+    perspective: 120rem;
+    -moz-perspective: 120rem;
+    margin: auto;
+   .side {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 3px;
     overflow: hidden;
-    .image {
-      transition: all 1s;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    box-shadow: 0 2rem 4rem rgba( black,  .5);
+    border-radius: 4px;
+    backface-visibility: hidden;
+    transition: all .8s ease;
+  &.front{ 
       width: 100%;
-      height: 95%;
-      background-size: cover;
-      background-position: center;
-      margin-bottom: 5px;
-    }
-    .btn.btn-collection{
-      width: 80%;
-      position: absolute;
-      top:255px;
-    }
-   
-    .image:hover{
-     transform: rotate(20deg) scale(1.6) ;
-     
-    }
-  
+      height: 100%;
+      background-size: cover; 
+      transition: all .7s ease;
+  }
+   &.back{
+    transform: rotateY(-180deg);
+    background-color: rgba( black,  .5);
+    width: 100%;
+    height: 100%;
+    position: relative;
     .collection-footer {
-      width: 100%;
-      height: 5%;
-      display: flex;
-      justify-content: space-between;
-      font-size: 18px;
-      margin-bottom: 10px;
-  
-      .name {
-        width: 90%;
-        margin-bottom: 15px;
+      position: absolute;
+      top :50%;
+      left : 50%;
+      transform : translate(-50%,-50%);
+      .name{
+        display: block;
+        font-size: 1.8rem;
+        width: 100%;
+        font-weight: 900;
       }
-  
-      .price {
-        width: 10%;
+      .price{
+        display: block;
+        font-size: 3rem;
       }
+   
+     
+
     }
+    .btn-collection{
+      position: absolute;
+      bottom: 0;
+      display: block;
+      width: 80%;
+      left: 50%;
+      transform: translate(-50%,-5px);
+
+    }
+
+  
+
+
+   }
+
+  } 
+  &:hover .front {
+    transform: rotateY(180deg);
+    
+  }
+  &:hover .back {
+    transform: rotateY(0);
+   
+  }
+
+
   }

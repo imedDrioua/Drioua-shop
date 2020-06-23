@@ -6,8 +6,13 @@ import Directory from '../../components/directory/directory';
 const HomePage = ()=>{
     return (
         <div className="homepage">
+        <div className="bg-video">
+            <video className="video" autoPlay muted loop>
+              <source src="./homeVideo.mp4"/>
+              Sorry §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+            </video>
+        </div>
         <h1 className="bigTitle">Asmas's Shop</h1>
-        <img className="shopImage" src="./home.png" alt="shop"/>
              <Directory />
         </div>
     );

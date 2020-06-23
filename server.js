@@ -2,17 +2,16 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors  = require("cors");
 const path = require("path");
-const key = 	
-'sk_test_51Gug5xFoN3XRC2nfs6zldgCSjqxM5AV2uPvETS5Zz4C4mL1WbNFqZJe8jbF8WwxYv5yXACWEDiUamc3VWyAh9o9T00JX9Qlidh';
-var stripe = require('stripe')(key);
-if(process.env.NODE_ENV === "production") require("dotenv").config();
+require("dotenv").config();
+var stripe = require('stripe')(process.env.STRIPE_KEY);
+
 const port  = process.env.PORT || 5000 ;
 
 
 const app=express();
 
  app.use(bodyParser.json());
- app.use(express.urlencoded({extended :true}));
+ app.use(bodyParser.urlencoded({extended :true}));
  app.use(cors());
  if(process.env.NODE_ENV === "production")
  {
@@ -24,15 +23,17 @@ const app=express();
  }
  app.listen(port , error=>{
      if(error) console.log(error);
-     console.log("Starting at port "+port );
+     console.log("Starting at port " + port );
  });
 app.post("/payment", (req , res )=>{
+    
     const body = {
         source : req.body.token.id ,
-        amount : req.body.price,
-        currency : "usd"
+        amount : req.body.amount,
+        currency : "DZA"
     };
-    stripe.chrages.create(body , (stripeErr , stripeSucc)=>{
+   
+    stripe.charges.create(body , (stripeErr , stripeSucc)=>{
         if(stripeErr) {
             res.status(500).send({error : stripeErr});
         }else{

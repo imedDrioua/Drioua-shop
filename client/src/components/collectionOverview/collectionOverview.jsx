@@ -5,9 +5,10 @@ import {selectCollectionArray  }from "../../redux/shop/shopSelector";
 import {connect} from "react-redux";
 
 const CollectionOverview=({collections})=> (
-    <div>
-    {console.log(collections)}
-         {collections.map(({id,...props}) =>  ( <CollectionPreview key={id} {...props}  />))}
+    <div >
+         {collections.map(({id,...props}) =>  (
+              <CollectionPreview key={id} {...props}  />)
+              )}
     </div>
 )
 const mapStateToProps= state =>( {
