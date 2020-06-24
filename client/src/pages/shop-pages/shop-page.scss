@@ -1,4 +1,7 @@
 .shop-page{
     padding: 3rem 7rem;
     text-align: center;
+    @media screen and (max-width : 800px){
+        padding: .3rem 2rem;
+    }
 }

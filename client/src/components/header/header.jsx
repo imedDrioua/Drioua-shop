@@ -20,9 +20,11 @@ const Header= ({currentUser,hidden})=>(
             </label>
      <div className="background"></div>
      <nav>
+
     <ul className="navigation_list">
     <Link to="/" className="logo" >
   <Logo />  
+  <p className="navTitle">R Zaghlach</p>
   </Link>
       <li className="item">
       <Link className="link" to="/shop">SHOP</Link>

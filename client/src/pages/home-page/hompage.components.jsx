@@ -9,7 +9,7 @@ const HomePage = ()=>{
         <div className="bg-video">
             <video className="video" autoPlay muted loop>
               <source src="./homeVideo.mp4"/>
-              Sorry §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+              Sorry your browser d'ont support video play
             </video>
         </div>
         <h1 className="bigTitle">Asmas's Z gh Shop</h1>

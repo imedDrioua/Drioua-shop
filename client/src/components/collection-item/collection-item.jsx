@@ -3,13 +3,11 @@ import Button from "../button/button";
 import "./collection-item.scss";
 import {connect} from "react-redux";
 import {addItem} from "../../redux/cart/cartActions";
-import {toggleCart} from "../../redux/cart/cartActions";
-import {selectHidden} from "../../redux/cart/cartSelector";
-const CollectionItem = ({item,addItem, toggleCart,hidden,space} )=> 
+const CollectionItem = ({item,addItem,space} )=> 
  { 
      const {imageUrl , name , price }=item;
   return (   
-     <div  className="col-md-3" >
+     <div  className="col-md-3 col-sm-12" >
      <div className="collection-item " style={space? {marginBottom : 30} :{}} >
   
       <div className="front side"  style={{backgroundImage: `url(${imageUrl})`} } />
@@ -19,7 +17,7 @@ const CollectionItem = ({item,addItem, toggleCart,hidden,space} )=>
           <span className="name">{name}</span>
           <span className="price">{price} DZA</span>
       </div> 
-     <Button onClick={()=>{addItem(item); (!hidden) && toggleCart() ;
+     <Button onClick={()=>{addItem(item);
       }} classes="btn btn-dark btn-lg btn-collection">ADD</Button>
       </div>
       </div>
@@ -29,12 +27,7 @@ const CollectionItem = ({item,addItem, toggleCart,hidden,space} )=>
  }
 const mapDispatchToProps= dispatch =>({
     addItem : (item)=> dispatch(addItem(item)),
-    toggleCart : ()=>dispatch(toggleCart())
 })
-const mapStateToProps= state=>(
-    {
-        hidden : selectHidden(state)
-    }
-)
 
-export default connect(mapStateToProps,mapDispatchToProps)(CollectionItem);
+
+export default connect(null,mapDispatchToProps)(CollectionItem);

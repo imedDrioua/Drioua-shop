@@ -1,6 +1,5 @@
 .sign-in{
-    width: 380px;
-}
-form .btn{
-margin: 10px;
+    @media screen and (max-width : 999px){
+        margin-bottom: 3rem;
+    }
 }

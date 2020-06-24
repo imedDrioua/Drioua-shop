@@ -47,6 +47,7 @@ const Signup =()=>{
       };
        const {displayName , password , email , confirmedPassword}= userCred;
         return(
+          <div className="col-sm-12 col-lg-6" >
            <div className="signUp">
                <h1 className="title">Sign Up</h1>
                <h3>I d'ont have an account yet !</h3>
@@ -82,6 +83,7 @@ const Signup =()=>{
                  <Button classes="btn btn-dark btn-lg" type="submit" onClick={handleSubmit}>
                  Sign Up</Button>
                </form>
+           </div>
            </div>
         )
     

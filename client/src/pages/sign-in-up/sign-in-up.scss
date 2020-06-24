@@ -1,8 +1,13 @@
 .SignInUp{
-    width : 850px;
-    display: flex;
-    justify-content: space-between;
-    margin: 30px auto;
-    box-sizing: border-box;
+    padding: 2rem 10rem;
+    @media screen and (max-width : 800px){
+        padding: .5rem 2.5rem;
+        font-size: 1rem;
+    }
+    @media screen and (min-width : 999px){
+        background-color: lightgrey;
+        clip-path: polygon(22% 6%, 97% 0, 100% 35%, 100% 70%, 96% 100%, 50% 100%, 50% 67%, 3% 84%, 0% 35%, 0 0);
+    }
 
+  
 }

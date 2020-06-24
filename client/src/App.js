@@ -1,22 +1,21 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, lazy, Suspense} from 'react';
 import {Route, BrowserRouter,Switch,Redirect} from "react-router-dom";
 import './App.css';
 import {auth} from "./firebase/firebase-util";
-import Hompage from "./pages/home-page/hompage.components";
-import ShopPage from "./pages/shop-pages/shop-page";
 import Header from "./components/header/header";
 import {  creatUsreDocument} from "./firebase/firebase-util";
 import {connect} from "react-redux";
 import {setCurrentUser} from "./redux/user/userActions";
 import {createStructuredSelector} from "reselect";
 import {selectCurrentUser} from "./redux/user/userSelector";
-import  Checkout  from './pages/checkout/checkout';
-import Sign from "./pages/sign-in-up/sign-in-up";
 
 
 const App =({setCurrentUser ,currentUser })=>{
-
-
+       
+       const Hompage=lazy(()=>import("./pages/home-page/hompage.components"));
+       const ShopPage=lazy(()=>import("./pages/shop-pages/shop-page"));
+       const Checkout=lazy(()=>import('./pages/checkout/checkout'));
+       const Sign=lazy(()=>import("./pages/sign-in-up/sign-in-up"));
        useEffect(() => {
               let subscribed = null;
               subscribed= auth.onAuthStateChanged(async (user) =>{
@@ -42,6 +41,7 @@ const App =({setCurrentUser ,currentUser })=>{
       
 
               return( 
+                     <Suspense fallback={<div style={{color : "red"}}>Now loading</div>}>
                        <BrowserRouter>
                     <Header  />
                     <Switch>
@@ -55,7 +55,8 @@ const App =({setCurrentUser ,currentUser })=>{
 
                                />
                                </Switch>
-                    </BrowserRouter>            
+                    </BrowserRouter> 
+                    </Suspense>           
              ) ;
        }
     

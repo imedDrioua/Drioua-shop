@@ -2,9 +2,12 @@ $sub-color: grey;
 $main-color: black;
 
 @mixin shrinkLabel {
-  top: -14px;
-  font-size: 12px;
+  top: -23px;
+  left: 0;
+  font-size: 15px;
   color: $main-color;
+ 
+ 
 }
 
 .group {
@@ -49,6 +52,8 @@ $main-color: black;
 
     &.shrink {
       @include shrinkLabel();
+   
+      
     }
   }
 }

@@ -30,6 +30,7 @@ const  SignIn = ()=>{
     }
     const {email , password}=userCred;
         return (
+            <div className="col-sm-12 col-lg-6" >
             <div className="sign-in">
                 <h1>Sign in</h1>
                 <h3>I already have an account</h3>
@@ -49,8 +50,9 @@ const  SignIn = ()=>{
                     value={password} 
                      />
                   <Button type="submit" classes={"btn btn-lg btn-dark"} onClick={handlSubmit} >Sign In </Button>
-                  <Button type="button" classes={"btn btn-lg btn-outline-primary"} onClick={()=>signInWithGoogle()} >Sign In with Google</Button>                               
+                  <Button type="button" classes={"btn btn-lg btn-primary"} onClick={()=>signInWithGoogle()} >Sign In with Google</Button>                               
                  </form>
+            </div>
             </div>
         )
     }

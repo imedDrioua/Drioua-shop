@@ -5,12 +5,15 @@ import { selectSections } from '../../redux/directory/directorySelectors';
 import {connect} from "react-redux";
 
 const Directory =({sections})=> {
-    return(    <div className="directory-menu">
+    return(  
+        <div className="container">
+          <div className=" row no-gutters">
        {
         sections.map(({ id ,...props})=>{
          return <MenuItem  key={id} {...props} />
    })
        }
+      </div>
       </div>
     );
 }
