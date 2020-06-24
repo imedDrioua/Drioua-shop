@@ -13,15 +13,13 @@ const app=express();
  app.use(bodyParser.json());
  app.use(bodyParser.urlencoded({extended :true}));
  app.use(cors());
- if(process.env.NODE_ENV === "production")
- {
+
      app.use(express.static(path.join(__dirname , "client/public")));
 
      app.get("*",(req , res )=>{
-          res.sendFile(path.join(__dirname,"client/buid/","index.html"));
-          console.log("i am in");
+          res.sendFile(path.join(__dirname,"client/build/","index.html"));
      });
- }
+ 
  app.listen(port , error=>{
      if(error) console.log(error);
      console.log("Starting at port " + port );
