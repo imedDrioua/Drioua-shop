@@ -2,13 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors  = require("cors");
 const path = require("path");
-require("dotenv").config();
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 var stripe = require('stripe')(process.env.STRIPE_KEY);
+
+const app=express();
 
 const port  = process.env.PORT || 5000 ;
 
 
-const app=express();
 
  app.use(bodyParser.json());
  app.use(bodyParser.urlencoded({extended :true}));
@@ -18,7 +19,7 @@ const app=express();
      app.use(express.static(path.join(__dirname , "client/build")));
 
      app.get("*",(req , res )=>{
-          res.sendFile(path.join(__dirname,"client/build/","index.html"));
+          res.sendFile(path.join(__dirname,"client/build","index.html"));
      });
  }
  app.listen(port , error=>{
