@@ -19,6 +19,7 @@ const app=express();
 
      app.get("*",(req , res )=>{
           res.sendFile(path.join(__dirname,"client/buid/","index.html"));
+          console.log("i am in");
      });
  }
  app.listen(port , error=>{
