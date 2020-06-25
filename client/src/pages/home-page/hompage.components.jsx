@@ -6,7 +6,7 @@ import Directory from '../../components/directory/directory';
 const HomePage = ()=>{
     return (
         <div className="homepage">
-        <div className="bg-video">
+        <div id="video" className="bg-video">
             <video className="video" autoPlay muted loop>
               <source src="./homeVideo.mp4"/>
               Sorry your browser d'ont support video play
