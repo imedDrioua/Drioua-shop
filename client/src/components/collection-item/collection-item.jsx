@@ -12,7 +12,7 @@ const CollectionItem = ({item,addItem,space} )=>
   
       <div className="front side"  style={{backgroundImage: `url(${imageUrl})`} } />
       <div className="back side">
-      <p>Asma Zgh</p>
+      <p>Imed dr</p>
       <div className="collection-footer">
           <span className="name">{name}</span>
           <span className="price">{price} DZA</span>

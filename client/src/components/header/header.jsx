@@ -15,7 +15,7 @@ const Header= ({currentUser,hidden})=>(
   <Logo />  
   </Link>
   <input type="checkbox" className="check" id="navi-toggle" />
-  <label for="navi-toggle" class="button">
+  <label for="navi-toggle" className="button">
                 <span>&nbsp;</span>
             </label>
      <div className="background"></div>
@@ -24,7 +24,7 @@ const Header= ({currentUser,hidden})=>(
     <ul className="navigation_list">
     <Link to="/" className="logo" >
   <Logo />  
-  <p className="navTitle">R Zaghlach</p>
+  <p className="navTitle">Dr Imed</p>
   </Link>
       <li className="item">
       <Link className="link" to="/shop">SHOP</Link>
