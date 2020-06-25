@@ -15,7 +15,7 @@ const Header= ({currentUser,hidden})=>(
   <Logo />  
   </Link>
   <input type="checkbox" className="check" id="navi-toggle" />
-  <label for="navi-toggle" class="button">
+  <label for="navi-toggle" className="button">
                 <span>&nbsp;</span>
             </label>
      <div className="background"></div>
