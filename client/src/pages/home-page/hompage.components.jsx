@@ -12,7 +12,7 @@ const HomePage = ()=>{
               Sorry your browser d'ont support video play
             </video>
         </div>
-        <h1 className="bigTitle">Asmas's Z gh Shop</h1>
+        <h1 className="bigTitle">Dr Imed's Shop</h1>
              <Directory />
 
              

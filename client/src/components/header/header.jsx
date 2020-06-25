@@ -24,7 +24,7 @@ const Header= ({currentUser,hidden})=>(
     <ul className="navigation_list">
     <Link to="/" className="logo" >
   <Logo />  
-  <p className="navTitle">R Zaghlach</p>
+  <p className="navTitle">Dr Imed</p>
   </Link>
       <li className="item">
       <Link className="link" to="/shop">SHOP</Link>
