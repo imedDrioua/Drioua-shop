@@ -1,6 +1,6 @@
 import React,{useEffect, lazy, Suspense} from 'react';
 import {Route, BrowserRouter,Switch,Redirect} from "react-router-dom";
-import './App.css';
+import './App.scss';
 import {auth} from "./firebase/firebase-util";
 import Header from "./components/header/header";
 import {  creatUsreDocument} from "./firebase/firebase-util";
@@ -41,7 +41,15 @@ const App =({setCurrentUser ,currentUser })=>{
       
 
               return( 
-                     <Suspense fallback={<div style={{color : "red"}}>Now loading</div>}>
+                     <Suspense fallback={<div className="loader">
+			<span>L</span>
+			<span>O</span>
+			<span>A</span>
+			<span>D</span>
+			<span>I</span>
+			<span>N</span>
+			<span>G</span>
+		</div>}>
                        <BrowserRouter>
                     <Header  />
                     <Switch>
