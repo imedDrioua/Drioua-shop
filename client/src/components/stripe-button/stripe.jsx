@@ -25,7 +25,7 @@ const Strip = ({price})=>{
     return(
        <StripeCheckout
        label="Pay Now"
-       name="Asma's Shop"
+       name="Drioua's Shop"
        shippingAddress
        billingAddress
        description={`Your total is ${price}`} 
